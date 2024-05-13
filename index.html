@@ -10,98 +10,338 @@
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
       crossorigin="anonymous"
     />
-    <title>Energy</title>
-    <link
-      rel="shortcut icon"
-      type="image/png"
-      href="images/icons8-pizza-96 (2).png"
-    />
+    <title>Pizzaland</title>
+    <link rel="shortcut icon" type="image/png" href="images/favicon.png" />
   </head>
   <body>
-    <nav class="navbar sticky-top navbar-expand-lg bg-body-tertiary">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">Navbar</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Dropdown
-              </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><hr class="dropdown-divider" /></li>
-                <li>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                </li>
-              </ul>
-            </li>
-          </ul>
-          <form class="d-flex" role="search">
-            <input
-              class="form-control me-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <button class="btn btn-outline-success" type="submit">
-              Search
-            </button>
-          </form>
+    <nav class="container">
+      <header
+        class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom"
+      >
+        <div class="col-md-3 mb-2 mb-md-0">
+          <a
+            href="/"
+            class="d-inline-flex link-body-emphasis text-decoration-none"
+          >
+            <img src="images/favicon.png" alt="logo" width="50" />
+          </a>
         </div>
-      </div>
+
+        <ul
+          class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0 text-warning"
+        >
+          <li><a href="#" class="nav-link px-2 link-secondary">Home</a></li>
+          <li>
+            <a href="#pizza-categories" class="nav-link px-2 text-warning"
+              >Features</a
+            >
+          </li>
+          <li>
+            <a href="#" class="nav-link px-2 text-warning">Pricing</a>
+          </li>
+        </ul>
+        <div id="cart">
+          <div class="col-md-3 d-flex justify-content-end">
+            <button
+              type="button"
+              class="d-flex align-items-center gap-2 btn btn-outline-warning"
+            >
+              <ion-icon
+                name="cart"
+                class="fs-3"
+                style="color: darkorange"
+              ></ion-icon
+              ><span>Cart</span>
+            </button>
+          </div>
+        </div>
+      </header>
     </nav>
     <main>
       <section class="hero-section">
-        <div class="container text-left">
-          <div class="row align-items-start">
+        <div class="container text-start">
+          <div class="row align-items-center">
             <div class="col">
               <h1>My Pizza Store</h1>
               <p>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Repudiandae quo asperiores est consequuntur vitae explicabo
-                porro voluptate sit earum quod esse ratione fugit, tempore,
-                itaque enim odio beatae nesciunt debitis?
+                Welcome to Pizzaland ! Enjoy mouthwatering pizzas and refreshing
+                drinks with us. Indulge in our delicious pizzas, from classic
+                Margherita to savory Pepperoni. Don't forget to sip on our
+                selection of sodas, cocktails, smoothies, and ice cream treats.
+                Join us today for a delightful dining experience!
               </p>
-              <button type="button" class="btn btn-primary">Primary</button>
+              <button
+                type="button"
+                class="btn btn-primary"
+                style="color: white; background-color: darkorange"
+              >
+                Buy Now
+              </button>
             </div>
             <div class="col">
-              <img
-                src="images/nik-owens-40OJLYVWeeM-unsplash.jpg"
-                alt="pizza photo"
-                width="600"
-                style="display: block"
-              />
+              <div
+                id="carouselExampleAutoplaying"
+                class="carousel slide carousel-fade"
+                data-bs-ride="carousel"
+                data-bs-interval="2000"
+              >
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img
+                      src="images/slide-1.jpg"
+                      class="d-block w-100"
+                      alt="A photo of slide 1"
+                    />
+                  </div>
+                  <div class="carousel-item">
+                    <img
+                      src="images/slide-2.jpg"
+                      class="d-block w-100"
+                      alt="A photo of slide 2"
+                    />
+                  </div>
+                  <div class="carousel-item">
+                    <img
+                      src="images/slide-3.jpg"
+                      class="d-block w-100"
+                      alt="A photo of slide 3"
+                    />
+                  </div>
+                </div>
+                <button
+                  class="carousel-control-prev"
+                  type="button"
+                  data-bs-target="#carouselExampleAutoplaying"
+                  data-bs-slide="prev"
+                >
+                  <span
+                    class="carousel-control-prev-icon"
+                    aria-hidden="true"
+                  ></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button
+                  class="carousel-control-next"
+                  type="button"
+                  data-bs-target="#carouselExampleAutoplaying"
+                  data-bs-slide="next"
+                >
+                  <span
+                    class="carousel-control-next-icon"
+                    aria-hidden="true"
+                  ></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </section>
+      <section id="pizza-categories">
+        <section>
+          <div
+            class="d-flex container justify-content-between align-items-center flex-wrap gap-2 mt-5"
+          >
+            <div class="card product flex-grow-1" style="width: 17rem">
+              <img
+                class="card-img-top"
+                src="images/margherita.jpg"
+                alt="a photo of margherita pizza"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Margherita</h5>
+                <p class="card-text">20$</p>
+                <a
+                  href="#"
+                  class="btn btn-primary add-to-cart"
+                  style="background-color: darkorange"
+                  >Add to card</a
+                >
+              </div>
+            </div>
+            <div class="card product flex-grow-1" style="width: 17rem">
+              <img
+                class="card-img-top"
+                src="images/pepperoni.jpg"
+                alt="a photo of pepperoni pizza"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Pepperoni</h5>
+                <p class="card-text">30$</p>
+                <a
+                  href="#"
+                  class="btn btn-primary add-to-cart"
+                  style="background-color: darkorange"
+                  >Add to cart</a
+                >
+              </div>
+            </div>
+            <div class="card product flex-grow-1" style="width: 17rem">
+              <img
+                class="card-img-top"
+                src="images/veggie.jpg"
+                alt="a photo of veggie pizza"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Veggie</h5>
+                <p class="card-text">25$</p>
+                <a
+                  href="#"
+                  class="btn btn-primary add-to-cart"
+                  style="background-color: darkorange"
+                  >Add to cart</a
+                >
+              </div>
+            </div>
+            <div class="card product flex-grow-1" style="width: 17rem">
+              <img
+                class="card-img-top"
+                src="images/meat.jpg"
+                alt="a photo of meat pizza"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Meat</h5>
+                <p class="card-text">40$</p>
+                <a
+                  href="#"
+                  class="btn btn-primary add-to-cart"
+                  style="background-color: darkorange"
+                  >Add to cart</a
+                >
+              </div>
+            </div>
+          </div>
+        </section>
+      </section>
+      <section id="drinks-categories">
+        <section>
+          <div
+            class="d-flex container justify-content-between align-items-center flex-wrap gap-2 mt-5"
+          >
+            <div class="card product flex-grow-1" style="width: 17rem">
+              <img
+                class="card-img-top"
+                src="images/smoothie.jpg"
+                alt="a photo of smoothie"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Smoothie</h5>
+                <p class="card-text">5$</p>
+                <a
+                  href="#"
+                  class="btn btn-primary add-to-cart"
+                  style="background-color: darkorange"
+                  >Add to card</a
+                >
+              </div>
+            </div>
+            <div class="card product flex-grow-1" style="width: 17rem">
+              <img
+                class="card-img-top"
+                src="images/soda.jpg"
+                alt="a photo of soda"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Soda</h5>
+                <p class="card-text">5$</p>
+                <a
+                  href="#"
+                  class="btn btn-primary add-to-cart"
+                  style="background-color: darkorange"
+                  >Add to cart</a
+                >
+              </div>
+            </div>
+            <div class="card product flex-grow-1" style="width: 17rem">
+              <img
+                class="card-img-top"
+                src="images/cocktail.jpg"
+                alt="a photo of cocktail"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Cocktail</h5>
+                <p class="card-text">5$</p>
+                <a
+                  href="#"
+                  class="btn btn-primary add-to-cart"
+                  style="background-color: darkorange"
+                  >Add to cart</a
+                >
+              </div>
+            </div>
+            <div class="card product flex-grow-1" style="width: 17rem">
+              <img
+                class="card-img-top"
+                src="images/icecream.jpg"
+                alt="a photo of Ice cream"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Ice cream</h5>
+                <p class="card-text">10$</p>
+                <a
+                  href="#"
+                  class="btn btn-primary add-to-cart"
+                  style="background-color: darkorange"
+                  >Add to cart</a
+                >
+              </div>
+            </div>
+          </div>
+        </section>
+      </section>
     </main>
-    <footer></footer>
+    <footer class="container">
+      <div
+        class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top"
+      >
+        <div class="col-md-4 d-flex align-items-center">
+          <a
+            href="/"
+            class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1"
+          >
+            <svg class="bi" width="30" height="24">
+              <use xlink:href="#bootstrap"></use>
+            </svg>
+          </a>
+          <span class="mb-3 mb-md-0 text-body-secondary"
+            >© 2024 Company, Inc</span
+          >
+        </div>
+        <div class="social-icons">
+          <div class="social-icon-container">
+            <a
+              href="https://www.instagram.com/your_instagram_username"
+              target="_blank"
+            >
+              <ion-icon
+                name="logo-instagram"
+                style="font-size: 2em; color: darkorange"
+              ></ion-icon>
+            </a>
+          </div>
+          <div class="social-icon-container">
+            <a
+              href="https://www.facebook.com/your_facebook_page"
+              target="_blank"
+            >
+              <ion-icon
+                name="logo-facebook"
+                style="font-size: 2em; color: darkorange"
+              ></ion-icon>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
     <script src="script.js"></script>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"

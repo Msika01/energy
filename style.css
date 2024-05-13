@@ -1,3 +1,36 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-  min-height: 159vh;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
+/* change transition duration to control the speed of fade effect */
+.carousel-item {
+  transition: opacity 0.5s ease-in-out !important;
+}
+
+.carousel-fade .active.carousel-item-start,
+.carousel-fade .active.carousel-item-end {
+  transition: opacity 0s 2.6s !important;
+}
+.social-icon-container {
+  margin-right: 10px; /* Adjust spacing between icons */
+}
+
+.social-icon-container ion-icon {
+  transition: transform 0.3s ease; /* Add a transition effect */
+}
+
+.social-icon-container ion-icon:hover {
+  transform: scale(1.2); /* Make the icon slightly larger on hover */
 }
