@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="light">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,6 +12,12 @@
     />
     <title>Pizzaland</title>
     <link rel="shortcut icon" type="image/png" href="images/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <nav class="container">
@@ -21,9 +27,10 @@
         <div class="col-md-3 mb-2 mb-md-0">
           <a
             href="/"
-            class="d-inline-flex link-body-emphasis text-decoration-none"
+            class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none gap-2"
           >
-            <img src="images/favicon.png" alt="logo" width="50" />
+            <img src="images/favicon.png" alt="PizzaLand Logo" width="50" />
+            <span class="fs-4 fw-medium">PizzaLand</span>
           </a>
         </div>
 
@@ -32,32 +39,64 @@
         >
           <li><a href="#" class="nav-link px-2 link-secondary">Home</a></li>
           <li>
-            <a href="#pizza-categories" class="nav-link px-2 text-warning"
-              >Features</a
-            >
-          </li>
-          <li>
-            <a href="#" class="nav-link px-2 text-warning">Pricing</a>
+            <a href="#our-menu" class="nav-link px-2 text-warning">Menu</a>
           </li>
         </ul>
-        <div id="cart">
-          <div class="col-md-3 d-flex justify-content-end">
-            <button
-              type="button"
-              class="d-flex align-items-center gap-2 btn btn-outline-warning"
-            >
-              <ion-icon
-                name="cart"
-                class="fs-3"
-                style="color: darkorange"
-              ></ion-icon
-              ><span>Cart</span>
-            </button>
-          </div>
+        <div class="col-md-3 d-flex justify-content-end">
+          <button
+            type="button"
+            class="d-flex align-items-center gap-2 btn btn-outline-warning"
+            data-bs-toggle="modal"
+            data-bs-target="#staticBackdrop"
+          >
+            <ion-icon
+              name="cart"
+              class="fs-3"
+              style="color: darkorange"
+            ></ion-icon
+            ><span>Cart</span>
+          </button>
         </div>
       </header>
     </nav>
     <main>
+      <div
+        class="modal fade"
+        id="staticBackdrop"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        tabindex="-1"
+        aria-labelledby="staticBackdropLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="staticBackdropLabel">
+                Checkout
+              </h1>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <div id="cart-items"></div>
+              <div class="total-price" id="total-price-box">
+                Total: <span id="total-price">$0</span>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button id="clear-btn" type="button" class="btn btn-danger">
+                Clear
+              </button>
+              <button type="button" class="btn btn-warning">Order</button>
+            </div>
+          </div>
+        </div>
+      </div>
       <section class="hero-section">
         <div class="container text-start">
           <div class="row align-items-center">
@@ -70,13 +109,7 @@
                 selection of sodas, cocktails, smoothies, and ice cream treats.
                 Join us today for a delightful dining experience!
               </p>
-              <button
-                type="button"
-                class="btn btn-primary"
-                style="color: white; background-color: darkorange"
-              >
-                Buy Now
-              </button>
+              <button type="button" class="btn btn-warning">Buy Now</button>
             </div>
             <div class="col">
               <div
@@ -137,8 +170,9 @@
           </div>
         </div>
       </section>
-      <section id="pizza-categories">
-        <section>
+      <section id="our-menu">
+        <h2 class="text-center fs-2">Our Menu</h2>
+        <div>
           <div
             class="d-flex container justify-content-between align-items-center flex-wrap gap-2 mt-5"
           >
@@ -153,8 +187,10 @@
                 <p class="card-text">20$</p>
                 <a
                   href="#"
-                  class="btn btn-primary add-to-cart"
-                  style="background-color: darkorange"
+                  class="btn btn-warning add-to-cart"
+                  data-price="20"
+                  data-name="Margherita"
+                  data-image="margherita"
                   >Add to card</a
                 >
               </div>
@@ -170,8 +206,9 @@
                 <p class="card-text">30$</p>
                 <a
                   href="#"
-                  class="btn btn-primary add-to-cart"
-                  style="background-color: darkorange"
+                  class="btn btn-warning add-to-cart"
+                  data-price="30"
+                  data-name="Pepperoni"
                   >Add to cart</a
                 >
               </div>
@@ -187,8 +224,10 @@
                 <p class="card-text">25$</p>
                 <a
                   href="#"
-                  class="btn btn-primary add-to-cart"
-                  style="background-color: darkorange"
+                  class="btn btn-warning add-to-cart"
+                  data-price="25"
+                  data-name="Veggie"
+                  data-image="images/veggie.jpg"
                   >Add to cart</a
                 >
               </div>
@@ -204,112 +243,104 @@
                 <p class="card-text">40$</p>
                 <a
                   href="#"
-                  class="btn btn-primary add-to-cart"
-                  style="background-color: darkorange"
+                  class="btn btn-warning add-to-cart"
+                  data-price="40"
+                  data-name="Meat"
                   >Add to cart</a
                 >
               </div>
             </div>
           </div>
-        </section>
-      </section>
-      <section id="drinks-categories">
-        <section>
-          <div
-            class="d-flex container justify-content-between align-items-center flex-wrap gap-2 mt-5"
-          >
-            <div class="card product flex-grow-1" style="width: 17rem">
-              <img
-                class="card-img-top"
-                src="images/smoothie.jpg"
-                alt="a photo of smoothie"
-              />
-              <div class="card-body">
-                <h5 class="card-title">Smoothie</h5>
-                <p class="card-text">5$</p>
-                <a
-                  href="#"
-                  class="btn btn-primary add-to-cart"
-                  style="background-color: darkorange"
-                  >Add to card</a
-                >
-              </div>
-            </div>
-            <div class="card product flex-grow-1" style="width: 17rem">
-              <img
-                class="card-img-top"
-                src="images/soda.jpg"
-                alt="a photo of soda"
-              />
-              <div class="card-body">
-                <h5 class="card-title">Soda</h5>
-                <p class="card-text">5$</p>
-                <a
-                  href="#"
-                  class="btn btn-primary add-to-cart"
-                  style="background-color: darkorange"
-                  >Add to cart</a
-                >
-              </div>
-            </div>
-            <div class="card product flex-grow-1" style="width: 17rem">
-              <img
-                class="card-img-top"
-                src="images/cocktail.jpg"
-                alt="a photo of cocktail"
-              />
-              <div class="card-body">
-                <h5 class="card-title">Cocktail</h5>
-                <p class="card-text">5$</p>
-                <a
-                  href="#"
-                  class="btn btn-primary add-to-cart"
-                  style="background-color: darkorange"
-                  >Add to cart</a
-                >
-              </div>
-            </div>
-            <div class="card product flex-grow-1" style="width: 17rem">
-              <img
-                class="card-img-top"
-                src="images/icecream.jpg"
-                alt="a photo of Ice cream"
-              />
-              <div class="card-body">
-                <h5 class="card-title">Ice cream</h5>
-                <p class="card-text">10$</p>
-                <a
-                  href="#"
-                  class="btn btn-primary add-to-cart"
-                  style="background-color: darkorange"
-                  >Add to cart</a
-                >
-              </div>
+        </div>
+        <div
+          class="d-flex container justify-content-between align-items-center flex-wrap gap-2 mt-5"
+        >
+          <div class="card product flex-grow-1" style="width: 17rem">
+            <img
+              class="card-img-top"
+              src="images/smoothie.jpg"
+              alt="a photo of smoothie"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Smoothie</h5>
+              <p class="card-text">5$</p>
+              <a
+                href="#"
+                class="btn btn-warning add-to-cart"
+                data-price="5"
+                data-name="Smoothie"
+                >Add to card</a
+              >
             </div>
           </div>
-        </section>
+          <div class="card product flex-grow-1" style="width: 17rem">
+            <img
+              class="card-img-top"
+              src="images/soda.jpg"
+              alt="a photo of soda"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Soda</h5>
+              <p class="card-text">5$</p>
+              <a
+                href="#"
+                class="btn btn-warning add-to-cart"
+                data-price="5"
+                data-name="Soda"
+                >Add to cart</a
+              >
+            </div>
+          </div>
+          <div class="card product flex-grow-1" style="width: 17rem">
+            <img
+              class="card-img-top"
+              src="images/cocktail.jpg"
+              alt="a photo of cocktail"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Cocktail</h5>
+              <p class="card-text">5$</p>
+              <a
+                href="#"
+                class="btn btn-warning add-to-cart"
+                data-price="5"
+                data-name="Cocktail"
+                >Add to cart</a
+              >
+            </div>
+          </div>
+          <div class="card product flex-grow-1" style="width: 17rem">
+            <img
+              class="card-img-top"
+              src="images/icecream.jpg"
+              alt="a photo of Ice cream"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Ice cream</h5>
+              <p class="card-text">10$</p>
+              <a
+                href="#"
+                class="btn btn-warning add-to-cart"
+                data-price="10"
+                data-name="ice cream"
+                >Add to cart</a
+              >
+            </div>
+          </div>
+        </div>
       </section>
     </main>
     <footer class="container">
       <div
         class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top"
       >
-        <div class="col-md-4 d-flex align-items-center">
-          <a
-            href="/"
-            class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1"
-          >
-            <svg class="bi" width="30" height="24">
-              <use xlink:href="#bootstrap"></use>
-            </svg>
-          </a>
-          <span class="mb-3 mb-md-0 text-body-secondary"
-            >© 2024 Company, Inc</span
-          >
+        <div>
+          <span class="text-body-secondary">© 2024 PizzaLand, Inc</span>
         </div>
-        <div class="social-icons">
-          <div class="social-icon-container">
+        <div class="d-flex align-items-center gap-2">
+          <div>
             <a
+              class="d-flex align-items-center"
               href="https://www.instagram.com/your_instagram_username"
               target="_blank"
             >
@@ -319,8 +350,9 @@
               ></ion-icon>
             </a>
           </div>
-          <div class="social-icon-container">
+          <div>
             <a
+              class="d-flex align-items-center"
               href="https://www.facebook.com/your_facebook_page"
               target="_blank"
             >
@@ -355,5 +387,6 @@
       nomodule
       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
     ></script>
+    <script></script>
   </body>
 </html>
