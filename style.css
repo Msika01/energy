@@ -2,73 +2,30 @@ html {
   scroll-behavior: smooth !important;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 body {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
   font-family: "Rubik", sans-serif !important;
-  .add-to-cart:hover {
-    background-color: darkorange; 
-    color: black;
-  }
 }
 
 main {
-  flex: 1;
+  flex: 1 !important;
 }
 
-
 .carousel-item {
-  transition: opacity 0.5s ease-in-out !important;
+  transition: opacity 0.75s ease-in-out !important;
 }
 
 .carousel-fade .active.carousel-item-start,
 .carousel-fade .active.carousel-item-end {
   transition: opacity 0s 2.6s !important;
 }
-.social-icon-container {
-  margin-right: 10px; /
+
+.about-us-img {
+  height: 250px !important;
+  width: 290px !important;
+  margin: 0 auto;
 }
 
-.social-icon-container ion-icon {
-  transition: transform 0.3s ease; 
-}
-.cart-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1rem;
-}
-
-.total-price {
-  font-size: 1.25rem;
-  font-weight: bold;
-  text-align: center;
-}
-
-.item-price {
-  font-weight: bold;
-}
-
-.modal-footer {
-  justify-content: space-between !important;
-}
-
-#our-menu {
-  padding-top: 6rem !important;
-}
-
-#our-menu h2 {
-  font-size: 3rem !important;
-}
-footer {
-  ion-icon:hover {
-    transform: scale(1.2);
-  }
+.menu-card-img {
+  height: 20rem;
+  object-fit: cover;
 }

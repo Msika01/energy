@@ -1,154 +1,228 @@
 <!DOCTYPE html>
-<html lang="en" data-bs-theme="light">
+<html lang="en" data-bs-theme>
   <head>
+    <!-- Metadata tags -->
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-      crossorigin="anonymous"
+    <meta
+      name="description"
+      content="Satisfy your cravings with our delicious, homemade pizzas delivered straight to your doorstep at PizzaLand."
     />
-    <title>Pizzaland</title>
-    <link rel="shortcut icon" type="image/png" href="images/favicon.png" />
+    <meta name="author" content="Ismail Sarour" />
+    <!-- Title -->
+    <title>PizzaLand</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/png" href="./images/favicon.png" />
+    <!-- Google font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
       rel="stylesheet"
     />
+    <!-- Bootstrap CSS CDN-->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <!-- Bootstrap Icons CDN-->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <!-- Internal script -->
+    <script>
+      // On page load or when changing themes
+      if (
+        localStorage.getItem("color-theme") === "dark" ||
+        (!("color-theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.setAttribute("data-bs-theme", "dark");
+      } else {
+        document.documentElement.setAttribute("data-bs-theme", "light");
+      }
+    </script>
+    <!-- External stylesheet -->
+    <link rel="stylesheet" href="./style.css" />
   </head>
-  <body>
-    <nav class="container">
-      <header
+  <body class="container d-flex flex-column min-vh-100">
+    <header class="px-4">
+      <nav
         class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom"
       >
         <div class="col-md-3 mb-2 mb-md-0">
           <a
-            href="/"
-            class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none gap-2"
+            href="#"
+            class="d-inline-flex link-body-emphasis text-decoration-none gap-2"
           >
-            <img src="images/favicon.png" alt="PizzaLand Logo" width="50" />
-            <span class="fs-4 fw-medium">PizzaLand</span>
+            <img
+              src="./images/pizzaland-logo.png"
+              alt="PizzaLand Logo"
+              width="40"
+              height="40"
+            />
+            <p class="m-0 fw-semibold fs-4">PizzaLand</p>
           </a>
         </div>
 
-        <ul
-          class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0 text-warning"
-        >
-          <li><a href="#" class="nav-link px-2 link-secondary">Home</a></li>
+        <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
           <li>
-            <a href="#our-menu" class="nav-link px-2 text-warning">Menu</a>
+            <a href="#home" class="nav-link px-2 text-warning">Home</a>
+          </li>
+          <li>
+            <a href="#about-us" class="nav-link px-2 text-secondary-emphasis"
+              >About us</a
+            >
+          </li>
+          <li>
+            <a href="#menu" class="nav-link px-2 text-secondary-emphasis"
+              >Menu</a
+            >
+          </li>
+          <li>
+            <a href="#contact-us" class="nav-link px-2 text-secondary-emphasis"
+              >Contact us</a
+            >
           </li>
         </ul>
-        <div class="col-md-3 d-flex justify-content-end">
+
+        <div class="col-md-3 text-end d-flex justify-content-end">
           <button
             type="button"
-            class="d-flex align-items-center gap-2 btn btn-outline-warning"
+            id="theme-toggle"
+            aria-label="Theme toggle"
+            class="btn btn-outline-warning me-2 d-flex align-items-center"
+          >
+            <i
+              id="theme-toggle-dark-icon"
+              class="bi bi-moon-stars-fill d-none d-flex"
+            ></i>
+            <i
+              class="bi bi-brightness-high-fill d-none"
+              id="theme-toggle-light-icon"
+            ></i>
+          </button>
+          <button
+            type="button"
+            class="btn btn-warning d-flex align-items-center"
             data-bs-toggle="modal"
             data-bs-target="#staticBackdrop"
           >
-            <ion-icon
-              name="cart"
-              class="fs-3"
-              style="color: darkorange"
-            ></ion-icon
-            ><span>Cart</span>
+            <i class="bi bi-cart-fill me-2"></i>Cart
           </button>
         </div>
-      </header>
-    </nav>
-    <main>
-      <div
-        class="modal fade"
-        id="staticBackdrop"
-        data-bs-backdrop="static"
-        data-bs-keyboard="false"
-        tabindex="-1"
-        aria-labelledby="staticBackdropLabel"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h1 class="modal-title fs-5" id="staticBackdropLabel">
-                Checkout
-              </h1>
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div class="modal-body">
-              <div id="cart-items"></div>
-              <div class="total-price" id="total-price-box">
-                Total: <span id="total-price">$0</span>
+        <div
+          class="modal fade"
+          id="staticBackdrop"
+          data-bs-backdrop="static"
+          data-bs-keyboard="false"
+          tabindex="-1"
+          aria-labelledby="staticBackdropLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Cart</h1>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
               </div>
-            </div>
-            <div class="modal-footer">
-              <button id="clear-btn" type="button" class="btn btn-danger">
-                Clear
-              </button>
-              <button type="button" class="btn btn-warning">Order</button>
+              <div class="modal-body">
+                <div id="cart-items"></div>
+                <div
+                  class="total-price fs-5 fw-bold text-center"
+                  id="total-price-box"
+                >
+                  Total: <span id="total-price">$0</span>
+                </div>
+              </div>
+              <div class="modal-footer d-flex justify-content-between">
+                <button
+                  id="clear-btn"
+                  type="button"
+                  class="btn btn-outline-danger"
+                >
+                  <i class="bi bi-trash3-fill"></i>
+                </button>
+                <button type="button" class="btn btn-success">Order</button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <section class="hero-section">
-        <div class="container text-start">
-          <div class="row align-items-center">
-            <div class="col">
-              <h1>My Pizza Store</h1>
-              <p>
-                Welcome to Pizzaland ! Enjoy mouthwatering pizzas and refreshing
-                drinks with us. Indulge in our delicious pizzas, from classic
-                Margherita to savory Pepperoni. Don't forget to sip on our
-                selection of sodas, cocktails, smoothies, and ice cream treats.
-                Join us today for a delightful dining experience!
-              </p>
-              <button type="button" class="btn btn-warning">
-                <a href="#our-menu" class="text-decoration-none text-dark"
-                  >Buy Now</a
-                >
-              </button>
-            </div>
-            <div class="col">
+      </nav>
+    </header>
+    <main>
+      <section id="home">
+        <div class="container px-4 py-5">
+          <div
+            class="row flex-lg-row-reverse align-items-center justify-content-center g-5 py-5 text-md-left"
+          >
+            <div class="col-10 col-sm-8 col-lg-6">
               <div
-                id="carouselExampleAutoplaying"
+                id="carouselExampleIndicators"
                 class="carousel slide carousel-fade"
                 data-bs-ride="carousel"
-                data-bs-interval="2000"
               >
+                <div class="carousel-indicators">
+                  <button
+                    type="button"
+                    data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide-to="0"
+                    class="active"
+                    aria-current="true"
+                    aria-label="Slide 1"
+                  ></button>
+                  <button
+                    type="button"
+                    data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide-to="1"
+                    aria-label="Slide 2"
+                  ></button>
+                  <button
+                    type="button"
+                    data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide-to="2"
+                    aria-label="Slide 3"
+                  ></button>
+                </div>
                 <div class="carousel-inner">
                   <div class="carousel-item active">
                     <img
-                      src="images/slide-1.jpg"
-                      class="d-block w-100"
-                      alt="A photo of slide 1"
+                      src="./images/carousel/carousel-1.webp"
+                      alt="carousel image 1"
+                      class="d-block w-100 img-fluid rounded-2"
+                      loading="lazy"
                     />
                   </div>
                   <div class="carousel-item">
                     <img
-                      src="images/slide-2.jpg"
-                      class="d-block w-100"
-                      alt="A photo of slide 2"
+                      src="./images/carousel/carousel-2.webp"
+                      alt="carousel image 2"
+                      class="d-block w-100 img-fluid rounded-2"
+                      loading="lazy"
                     />
                   </div>
                   <div class="carousel-item">
                     <img
-                      src="images/slide-3.jpg"
-                      class="d-block w-100"
-                      alt="A photo of slide 3"
+                      src="./images/carousel/carousel-3.webp"
+                      alt="carousel image 3"
+                      class="d-block w-100 img-fluid rounded-2"
+                      loading="lazy"
                     />
                   </div>
                 </div>
                 <button
                   class="carousel-control-prev"
                   type="button"
-                  data-bs-target="#carouselExampleAutoplaying"
+                  data-bs-target="#carouselExampleIndicators"
                   data-bs-slide="prev"
                 >
                   <span
@@ -160,7 +234,7 @@
                 <button
                   class="carousel-control-next"
                   type="button"
-                  data-bs-target="#carouselExampleAutoplaying"
+                  data-bs-target="#carouselExampleIndicators"
                   data-bs-slide="next"
                 >
                   <span
@@ -171,238 +245,442 @@
                 </button>
               </div>
             </div>
+            <div class="col-lg-6">
+              <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">
+                <span class="text-warning">PizzaLand </span>- your ultimate
+                destination for fresh pizzas!
+              </h1>
+              <p class="lead">
+                Indulge in a world of flavor at PizzaLand. Homemade pizzas made
+                with the finest ingredients await you. Whether you're a meat
+                lover, vegetarian, or seeking something sweet, we've got the
+                perfect slice for you.
+              </p>
+              <div
+                class="d-grid gap-2 d-md-flex justify-content-md-start justify-content-sm-center"
+              >
+                <button
+                  type="button"
+                  class="btn btn-warning btn-lg px-4 me-md-2"
+                  onClick="document.getElementById('menu').scrollIntoView();"
+                >
+                  Order yours now
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-outline-secondary btn-lg px-4"
+                  onClick="document.getElementById('about-us').scrollIntoView();"
+                >
+                  Learn more
+                  <i
+                    class="bi bi-arrow-down-short"
+                    style="font-size: 1.55rem"
+                  ></i>
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </section>
-      <section id="our-menu">
-        <h2 class="text-center fs-2">Our Menu</h2>
-        <div>
-          <div
-            class="d-flex container justify-content-between align-items-center flex-wrap gap-2 mt-5"
-          >
-            <div class="card product flex-grow-1" style="width: 17rem">
-              <img
-                class="card-img-top"
-                src="images/margherita.jpg"
-                alt="a photo of margherita pizza"
-              />
-              <div class="card-body">
-                <h5 class="card-title">Margherita</h5>
-                <p class="card-text">20$</p>
-                <a
-                  href="#"
-                  class="btn btn-warning add-to-cart"
-                  data-price="20"
-                  data-name="Margherita"
-                  data-image="margherita"
-                  >Add to card</a
-                >
+      <section id="about-us">
+        <div class="container px-4 py-5">
+          <h2 class="text-center fs-2 fw-semibold pb-5 pt-2">About us</h2>
+          <div class="row gap-2 gap-sm-0">
+            <div class="col-md-4">
+              <div
+                class="card h-100 mb-4 border border-warning-subtle d-flex flex-column"
+              >
+                <img
+                  src="./images/about-us/our-story.svg"
+                  class="card-img-top about-us-img mt-4"
+                  alt="Our Story"
+                />
+                <div class="card-body d-flex flex-column">
+                  <h3 class="card-title text-center fs-3 text-warning mt-3">
+                    Our Story
+                  </h3>
+                  <p class="card-text flex-grow-1">
+                    PizzaLand started in Agadir as a family-owned pizzeria. From
+                    humble beginnings, our commitment to quality and
+                    authenticity remains unchanged.
+                  </p>
+                </div>
               </div>
             </div>
-            <div class="card product flex-grow-1" style="width: 17rem">
-              <img
-                class="card-img-top"
-                src="images/pepperoni.jpg"
-                alt="a photo of pepperoni pizza"
-              />
-              <div class="card-body">
-                <h5 class="card-title">Pepperoni</h5>
-                <p class="card-text">30$</p>
-                <a
-                  href="#"
-                  class="btn btn-warning add-to-cart"
-                  data-price="30"
-                  data-name="Pepperoni"
-                  >Add to cart</a
-                >
+            <div class="col-md-4">
+              <div
+                class="card h-100 mb-4 border border-warning-subtle d-flex flex-column"
+              >
+                <img
+                  src="./images/about-us/our-mission.svg"
+                  class="card-img-top about-us-img mt-4"
+                  alt="Our Mission"
+                />
+                <div class="card-body d-flex flex-column">
+                  <h3 class="card-title text-center fs-3 text-warning mt-3">
+                    Our Mission
+                  </h3>
+                  <p class="card-text flex-grow-1">
+                    At PizzaLand, we strive to delight customers with every
+                    slice. Using fresh ingredients and innovative flavors, we
+                    create unforgettable dining experiences, bringing people
+                    together one slice at a time.
+                  </p>
+                </div>
               </div>
             </div>
-            <div class="card product flex-grow-1" style="width: 17rem">
-              <img
-                class="card-img-top"
-                src="images/veggie.jpg"
-                alt="a photo of veggie pizza"
-              />
-              <div class="card-body">
-                <h5 class="card-title">Veggie</h5>
-                <p class="card-text">25$</p>
-                <a
-                  href="#"
-                  class="btn btn-warning add-to-cart"
-                  data-price="25"
-                  data-name="Veggie"
-                  data-image="images/veggie.jpg"
-                  >Add to cart</a
-                >
-              </div>
-            </div>
-            <div class="card product flex-grow-1" style="width: 17rem">
-              <img
-                class="card-img-top"
-                src="images/meat.jpg"
-                alt="a photo of meat pizza"
-              />
-              <div class="card-body">
-                <h5 class="card-title">Meat</h5>
-                <p class="card-text">40$</p>
-                <a
-                  href="#"
-                  class="btn btn-warning add-to-cart"
-                  data-price="40"
-                  data-name="Meat"
-                  >Add to cart</a
-                >
+            <div class="col-md-4">
+              <div
+                class="card h-100 mb-4 border border-warning-subtle d-flex flex-column"
+              >
+                <img
+                  src="./images/about-us/our-team.svg"
+                  class="card-img-top about-us-img mt-4"
+                  alt="Our Team"
+                />
+                <div class="card-body d-flex flex-column">
+                  <h3 class="card-title text-center fs-3 text-warning mt-3">
+                    Our Team
+                  </h3>
+                  <p class="card-text flex-grow-1">
+                    Behind every delicious pizza at PizzaLand is a dedicated
+                    team. From our chefs to our staff, we take pride in
+                    delivering the best pizza experience to our valued
+                    customers.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
         </div>
-        <div
-          class="d-flex container justify-content-between align-items-center flex-wrap gap-2 mt-5"
-        >
-          <div class="card product flex-grow-1" style="width: 17rem">
-            <img
-              class="card-img-top"
-              src="images/smoothie.jpg"
-              alt="a photo of smoothie"
-            />
-            <div class="card-body">
-              <h5 class="card-title">Smoothie</h5>
-              <p class="card-text">5$</p>
-              <a
-                href="#"
-                class="btn btn-warning add-to-cart"
-                data-price="5"
-                data-name="Smoothie"
-                >Add to card</a
-              >
+      </section>
+      <section id="menu">
+        <div class="container px-4 py-5">
+          <h2 class="text-center fs-2 fw-semibold pb-5 pt-2">Our Menu</h2>
+          <div class="row">
+            <!-- Menu Item 1 -->
+            <div class="col-md-6">
+              <div class="card mb-4">
+                <img
+                  src="./images/menu/classic-margherita.webp"
+                  class="card-img-top menu-card-img"
+                  alt="Classic Margherita"
+                />
+                <div class="card-body">
+                  <h3 class="card-title">Classic Margherita</h3>
+                  <p class="card-text">
+                    Simple and satisfying. Fresh tomatoes, mozzarella cheese,
+                    and basil on a crispy crust.
+                  </p>
+                  <p class="card-price fw-medium">$9.99</p>
+                  <button
+                    class="btn btn-warning add-to-cart"
+                    data-price="9.99"
+                    data-name="Classic Margherita"
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- Menu Item 2 -->
+            <div class="col-md-6">
+              <div class="card mb-4">
+                <img
+                  src="./images/menu/meat-lover_s-delight.jpg"
+                  class="card-img-top menu-card-img"
+                  alt="Meat Lover's Delight"
+                />
+                <div class="card-body">
+                  <h3 class="card-title">Meat Lover's Delight</h3>
+                  <p class="card-text">
+                    Loaded with pepperoni, sausage, bacon, and BBQ sauce for a
+                    carnivore's dream.
+                  </p>
+                  <p class="card-price fw-medium">$19.99</p>
+                  <button
+                    class="btn btn-warning add-to-cart"
+                    data-price="19.99"
+                    data-name="Meat Lover's Delight"
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- Menu Item 3 -->
+            <div class="col-md-6">
+              <div class="card mb-4">
+                <img
+                  src="./images/menu/california-veggie-pizza.webp"
+                  class="card-img-top menu-card-img"
+                  alt="California Veggie Pizza"
+                />
+                <div class="card-body">
+                  <h3 class="card-title">California Veggie Pizza</h3>
+                  <p class="card-text">
+                    Topped with black beans, corn, red onion, two kinds of
+                    peppers, avocado, and cilantro for fun, fresh flavor.
+                  </p>
+                  <p class="card-price fw-medium">$17.99</p>
+                  <button
+                    class="btn btn-warning add-to-cart"
+                    data-price="17.99"
+                    data-name="California Veggie Pizza"
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- Menu Item 4 -->
+            <div class="col-md-6">
+              <div class="card mb-4">
+                <img
+                  src="./images/menu/hawaiian-bliss.webp"
+                  class="card-img-top menu-card-img"
+                  alt="Hawaiian Bliss"
+                />
+                <div class="card-body">
+                  <h3 class="card-title">Hawaiian Bliss</h3>
+                  <p class="card-text">
+                    Savor the sweet and savory combination of pineapple, ham,
+                    and mozzarella cheese.
+                  </p>
+                  <p class="card-price fw-medium">$11.99</p>
+                  <button
+                    class="btn btn-warning add-to-cart"
+                    data-price="11.99"
+                    data-name="Hawaiian Bliss"
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- Menu Item 5 -->
+            <div class="col-md-6">
+              <div class="card mb-4">
+                <img
+                  src="./images/menu/classic-caesar-salad.webp"
+                  class="card-img-top menu-card-img"
+                  alt="Classic Caesar Salad"
+                />
+                <div class="card-body">
+                  <h3 class="card-title">Classic Caesar Salad</h3>
+                  <p class="card-text">
+                    Crisp romaine lettuce, crunchy croutons, tangy Caesar
+                    dressing, and shaved Parmesan cheese.
+                  </p>
+                  <p class="card-price fw-medium">$7.99</p>
+                  <button
+                    class="btn btn-warning add-to-cart"
+                    data-price="7.99"
+                    data-name="Classic Caesar Salad"
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- Menu Item 6 -->
+            <div class="col-md-6">
+              <div class="card mb-4">
+                <img
+                  src="./images/menu/chocolate-fudge-brownie.webp"
+                  class="card-img-top menu-card-img"
+                  alt="Chocolate Fudge Brownie"
+                />
+                <div class="card-body">
+                  <h3 class="card-title">Chocolate Fudge Brownie</h3>
+                  <p class="card-text">
+                    Rich and decadent chocolate fudge brownie, perfect for
+                    satisfying your sweet cravings.
+                  </p>
+                  <p class="card-price fw-medium">$5.99</p>
+                  <button
+                    class="btn btn-warning add-to-cart"
+                    data-price="5.99"
+                    data-name="Chocolate Fudge Brownie"
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- Menu Item 7 -->
+            <div class="col-md-6">
+              <div class="card mb-4">
+                <img
+                  src="./images/menu/fruit-smoothie.webp"
+                  class="card-img-top menu-card-img"
+                  alt="Fruit Smoothie"
+                />
+                <div class="card-body">
+                  <h3 class="card-title">Fruit Smoothie</h3>
+                  <p class="card-text">
+                    A refreshing blend of fresh fruits, yogurt, and honey,
+                    served chilled.
+                  </p>
+                  <p class="card-price fw-medium">$4.99</p>
+                  <button
+                    class="btn btn-warning add-to-cart"
+                    data-price="4.99"
+                    data-name="Fruit Smoothie"
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- Menu Item 8 -->
+            <div class="col-md-6">
+              <div class="card mb-4">
+                <img
+                  src="./images/menu/italian-gelato.webp"
+                  class="card-img-top menu-card-img"
+                  alt="Italian Gelato"
+                />
+                <div class="card-body">
+                  <h3 class="card-title">Italian Gelato</h3>
+                  <p class="card-text">
+                    Creamy and indulgent Italian gelato, available in a variety
+                    of flavors.
+                  </p>
+                  <p class="card-price fw-medium">$2.99</p>
+                  <button
+                    class="btn btn-warning add-to-cart"
+                    data-price="2.99"
+                    data-name="Italian Gelato"
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="card product flex-grow-1" style="width: 17rem">
-            <img
-              class="card-img-top"
-              src="images/soda.jpg"
-              alt="a photo of soda"
-            />
-            <div class="card-body">
-              <h5 class="card-title">Soda</h5>
-              <p class="card-text">5$</p>
-              <a
-                href="#"
-                class="btn btn-warning add-to-cart"
-                data-price="5"
-                data-name="Soda"
-                >Add to cart</a
-              >
+        </div>
+      </section>
+      <section id="contact-us">
+        <div class="container px-4 pt-5">
+          <div class="row container border rounded-2 px-0 mx-auto">
+            <div
+              class="col-md-6 d-flex flex-column justify-content-start p-4 bg-body-tertiary"
+            >
+              <h2 class="fs-2 fw-semibold pb-4 pt-2">Get in touch</h2>
+              <p class="fs-5 pe-5 mb-4 flex-grow-1">
+                Have a question or feedback? We'd love to hear from you! Reach
+                out to us using the form or through our contact information
+                below.
+              </p>
+              <ul class="list-unstyled m-sm-0">
+                <li><strong>Email:</strong> info@pizzaland.com</li>
+                <li><strong>Phone:</strong> +212 612-345678</li>
+                <li><strong>Address:</strong> 123 Street, Agadir, Morocco</li>
+              </ul>
             </div>
-          </div>
-          <div class="card product flex-grow-1" style="width: 17rem">
-            <img
-              class="card-img-top"
-              src="images/cocktail.jpg"
-              alt="a photo of cocktail"
-            />
-            <div class="card-body">
-              <h5 class="card-title">Cocktail</h5>
-              <p class="card-text">5$</p>
-              <a
-                href="#"
-                class="btn btn-warning add-to-cart"
-                data-price="5"
-                data-name="Cocktail"
-                >Add to cart</a
-              >
-            </div>
-          </div>
-          <div class="card product flex-grow-1" style="width: 17rem">
-            <img
-              class="card-img-top"
-              src="images/icecream.jpg"
-              alt="a photo of Ice cream"
-            />
-            <div class="card-body">
-              <h5 class="card-title">Ice cream</h5>
-              <p class="card-text">10$</p>
-              <a
-                href="#"
-                class="btn btn-warning add-to-cart"
-                data-price="10"
-                data-name="ice cream"
-                >Add to cart</a
-              >
+            <div class="col-md-6 p-4 rounded-sm-start-0 rounded-top-0">
+              <form>
+                <div class="mb-3">
+                  <label for="name" class="form-label">Your Name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="name"
+                    placeholder="John Doe"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="email" class="form-label">Your Email</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="email"
+                    placeholder="johndoe@example.com"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="message" class="form-label">Message</label>
+                  <textarea
+                    class="form-control"
+                    id="message"
+                    rows="5"
+                    placeholder="Enter your message"
+                  ></textarea>
+                </div>
+                <button type="submit" class="btn btn-warning w-100">
+                  Send Message
+                </button>
+              </form>
             </div>
           </div>
         </div>
       </section>
     </main>
-    <footer class="container">
+    <footer class="container px-4 pt-5">
       <div
-        class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top"
+        class="d-flex flex-wrap justify-content-between align-items-center py-3 mt-4 border-top"
       >
-        <div>
-          <span class="text-body-secondary">© 2024 PizzaLand, Inc</span>
+        <div class="copyright">
+          <span class="text-body-secondary"
+            >© <span id="year">xxxx</span> PizzaLand, Inc</span
+          >
         </div>
-        <div class="d-flex align-items-center gap-2">
-          <div>
-            <a
-              class="d-flex align-items-center"
-              href="https://github.com/Msika01/energy.git"
-              target="_blank"
-            >
-              <ion-icon
-                name="logo-github"
-                style="font-size: 2em; color: darkorange"
-              ></ion-icon>
-            </a>
-          </div>
-          <div>
-            <a
-              class="d-flex align-items-center"
-              href="https://www.esta.ac.ma/"
-              target="_blank"
-            >
-              <ion-icon
-                name="logo-instagram"
-                style="font-size: 2em; color: darkorange"
-              ></ion-icon>
-            </a>
-          </div>
-          <div>
-            <a
-              class="d-flex align-items-center"
-              href="https://www.esta.ac.ma/"
-              target="_blank"
-            >
-              <ion-icon
-                name="logo-facebook"
-                style="font-size: 2em; color: darkorange"
-              ></ion-icon>
-            </a>
-          </div>
+        <div class="made-by">
+          <p class="mb-0 text-body-secondary">
+            Made with <i class="bi bi-heart-fill text-warning"></i> by Ismail
+            Sarour
+          </p>
+        </div>
+        <div class="social-links d-flex align-items-center gap-3">
+          <a
+            class="d-flex align-items-center text-warning"
+            href="https://github.com/Msika01/energy.git"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub"
+          >
+            <i class="bi bi-github" style="font-size: 1.5rem"></i>
+          </a>
+          <a
+            class="d-flex align-items-center text-warning"
+            href="https://www.x.com/your_x_username"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="X/Twitter"
+          >
+            <i class="bi bi-twitter-x" style="font-size: 1.5rem"></i>
+          </a>
+          <a
+            class="d-flex align-items-center text-warning"
+            href="https://www.facebook.com/your_facebook_page"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Facebook"
+          >
+            <i class="bi bi-facebook" style="font-size: 1.5rem"></i>
+          </a>
+          <a
+            class="d-flex align-items-center text-warning"
+            href="https://www.instagram.com/your_instagram_username"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram"
+          >
+            <i class="bi bi-instagram" style="font-size: 1.5rem"></i>
+          </a>
         </div>
       </div>
     </footer>
-    <script src="script.js"></script>
+    <!-- External scripts -->
+    <script src="./script/themeToggle.js"></script>
+    <script defer src="./script/addToCart.js"></script>
+    <script src="./script/updateFooterYear.js"></script>
+    <!-- Bootstrap 5 JS CDN (does not include Popper) -->
     <script
-      type="module"
-      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
-    ></script>
-    <script
-      nomodule
-      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+      integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
       crossorigin="anonymous"
     ></script>
-    <script
-      type="module"
-      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
-    ></script>
-    <script
-      nomodule
-      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
-    ></script>
-    <script></script>
   </body>
 </html>
