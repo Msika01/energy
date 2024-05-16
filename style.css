@@ -13,13 +13,17 @@ body {
   flex-direction: column;
   min-height: 100vh;
   font-family: "Rubik", sans-serif !important;
+  .add-to-cart:hover {
+    background-color: darkorange; 
+    color: black;
+  }
 }
 
 main {
   flex: 1;
 }
 
-/* change transition duration to control the speed of fade effect */
+
 .carousel-item {
   transition: opacity 0.5s ease-in-out !important;
 }
@@ -29,17 +33,12 @@ main {
   transition: opacity 0s 2.6s !important;
 }
 .social-icon-container {
-  margin-right: 10px; /* Adjust spacing between icons */
+  margin-right: 10px; /
 }
 
 .social-icon-container ion-icon {
-  transition: transform 0.3s ease; /* Add a transition effect */
+  transition: transform 0.3s ease; 
 }
-
-.social-icon-container ion-icon:hover {
-  transform: scale(1.2); /* Make the icon slightly larger on hover */
-}
-
 .cart-item {
   display: flex;
   justify-content: space-between;
@@ -67,4 +66,9 @@ main {
 
 #our-menu h2 {
   font-size: 3rem !important;
+}
+footer {
+  ion-icon:hover {
+    transform: scale(1.2);
+  }
 }
